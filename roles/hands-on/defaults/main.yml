@@ -1,0 +1,28 @@
+---
+users:
+  # hands-on
+  - name: hands-on-user01
+    home: yes
+    state: present
+    remove: no
+    password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          39626635343434356565386231336136343535386361353132313338323561386638626265613636
+          6264363235343466643436376461353639663532356432380a383364396133313236623933383366
+          37643362653235336636303964313937626139396431363938623562366461373964366163616438
+          3561366164613038610a346663326539343966313161646536363661373662366131353733663864
+          3636
+
+  # ika
+  - name: user-ika
+    home: yes
+    state: present
+    remove: no
+    password: ika
+
+  # tako
+  - name: user-tako
+    home: yes
+    state: present
+    remove: no
+    password: tako

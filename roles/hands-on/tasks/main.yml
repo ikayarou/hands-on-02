@@ -1,10 +1,16 @@
 ---
-- name: create user
+- name: create users
   user:
-    name: hands-on-user01
-    createhome: yes
-    state: present
-    password: "{{ 'hands-on' | password_hash('sha512') }}"
+    name: "{{ item.name }}"
+    createhome: "{{ item.home }}"
+    state: "{{ item.state }}"
+    remove: "{{ item.remove }}"
+    password: "{{ item.password | password_hash('sha512') }}"
+  with_items: "{{ users }}"
+
+- name: change hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
 
 - name: modify sshd_config
   lineinfile:
